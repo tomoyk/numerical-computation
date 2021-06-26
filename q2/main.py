@@ -63,7 +63,7 @@ def solver(A, b, n):
 
         # 表示
         if ENABLE_DEBUG:
-            _display_a(A)
+            display_a(A)
 
         # break
         # if x == 1:
@@ -119,6 +119,7 @@ def main():
 
     A2 = solver(A, b, n)
     display_a(A2)
+
 
 if __name__ == "__main__":
     main()
