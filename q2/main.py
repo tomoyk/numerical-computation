@@ -69,7 +69,8 @@ def solver(A, b, n):
         # if x == 1:
         #    break
 
-    return A
+    xs = [b[i] / A[i][i] for i in range(n-1)]
+    return xs
 
 
 """
@@ -114,19 +115,29 @@ def main():
 
     ''' 既知ベクトルb '''
     b = [0 for _ in range(n-1)]
-    # Betaで初期化
     b[-1] = beta
 
+    # 実行時間の計測と実行
     import time
     elapsed_times = set()
     for _ in range(10):
         begin = time.time()
-        A2 = solver(A, b, n)
-        elapsed_times.add( time.time() - begin )
+        solver(A, b, n)
+        elapsed_times.add(time.time() - begin)
         # print(time.time() - begin)
-    	# display_a(A2)
+        # display_a(A2)
+    print("time=", sum(elapsed_times) / len(elapsed_times))
 
-    print("time=", sum(elapsed_times) / len(elapsed_times) )
+    # 厳密解 y
+    xs = [h*i for i in range(1, d)]
+    ys = [math.sin(x) for x in xs]
+
+    # 解析解 y2
+    ys2 = solver(A, b, n)
+    fraction_top = max(abs(y2 - y) for y2,y in zip(ys2, ys))
+    fraction_bottom = max(abs(y) for y in ys)
+    print("error=", fraction_top / fraction_bottom)
+
 
 if __name__ == "__main__":
     main()
