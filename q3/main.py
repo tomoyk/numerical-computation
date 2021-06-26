@@ -65,6 +65,7 @@ def main():
     A = np.diag(_alpha_arr) \
         + np.diag(_beta_arr, k=1) \
         + np.diag(_beta_arr, k=-1)
+    print(f"n={n}, d={d}, h={h}, alpha={_alpha}, beta={_beta}")
 
     # 既知ベクトルb
     b = np.array([0] * n)
