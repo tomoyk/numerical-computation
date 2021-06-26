@@ -100,7 +100,7 @@ def main():
     alpha = 1 - 2 / h**2
     beta = 1 / h**2
     if ENABLE_PRINT:
-        print(f"n={n}, h={h}, alpha={alpha}, beta={beta}")
+        print(f"n={n}, d={d}, h={h}, alpha={alpha}, beta={beta}")
 
     ''' 係数行列A '''
     A = [[0 for _ in range(n-1)] for _ in range(n-1)]
@@ -117,9 +117,16 @@ def main():
     # Betaで初期化
     b[-1] = beta
 
-    A2 = solver(A, b, n)
-    display_a(A2)
+    import time
+    elapsed_times = set()
+    for _ in range(10):
+        begin = time.time()
+        A2 = solver(A, b, n)
+        elapsed_times.add( time.time() - begin )
+        # print(time.time() - begin)
+    	# display_a(A2)
 
+    print( sum(elapsed_times) / len(elapsed_times) )
 
 if __name__ == "__main__":
     main()
