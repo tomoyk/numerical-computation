@@ -126,7 +126,7 @@ def main():
         # print(time.time() - begin)
     	# display_a(A2)
 
-    print( sum(elapsed_times) / len(elapsed_times) )
+    print("time=", sum(elapsed_times) / len(elapsed_times) )
 
 if __name__ == "__main__":
     main()
