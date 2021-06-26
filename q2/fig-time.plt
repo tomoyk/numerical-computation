@@ -15,8 +15,8 @@ set key font "Times New Roman, 18"
 
 # Axis
 set logscale xy
-set xlabel "d"
-set ylabel "error"
+set xlabel "n"
+set ylabel "cpu time"
 
 plot "result-time.csv" with linespoints
 
