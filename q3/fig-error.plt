@@ -15,9 +15,10 @@ set key font "Times New Roman, 18"
 
 # Axis
 set logscale xy
-set xlabel "d"
+set xlabel "n"
 set ylabel "error"
 
-plot "result-error.csv" with linespoints
+plot "result-error.csv" title "CG" with linespoints, \
+     "../q2/result-error.csv" title "Gauss" with linespoints
 
 # pause -1

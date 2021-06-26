@@ -8,16 +8,19 @@ https://sungwookyoo.github.io/study/conjugate_gradient/
 
 
 def solver(_A, _b):
-    b_norm = np.linalg.norm(_b)  # bの行列式
-    x = np.array([1] * _b.size)  # 初期化
-    r = _b - np.dot(_A, x)  # 残差ベクトル
+    _AA = _A.copy()
+    _bb = _b.copy()
+
+    b_norm = np.linalg.norm(_bb)  # bの行列式
+    x = np.array([1] * _bb.size)  # 初期化
+    r = _bb - np.dot(_AA, x)  # 残差ベクトル
     p = r.copy()
     diffs = []  # 集計用
 
     while True:
         # step1
         fraction_top = np.dot(p, r)
-        Ap = np.dot(_A, p)
+        Ap = np.dot(_AA, p)
         fraction_bottom = np.dot(p, Ap)
         alpha = fraction_top / fraction_bottom
 
@@ -71,15 +74,34 @@ def main():
     b = np.array([0] * n)
     b[-1] = _beta
 
-    # 計算
-    x_arr, diff_arr = solver(A, b)
-    print(x_arr)
+    # 時間の計測
+    import time
+    elapsed_times = set()
+    for _ in range(10):
+        begin = time.time()
+        solver(A, b)
+        elapsed_times.add(time.time() - begin)
+        # print(time.time() - begin)
+    print("time::", n, ",", sum(elapsed_times) / len(elapsed_times))
 
-    # 書き出し
-    with open("result-time.csv", mode="w") as f:
+    # 厳密解 y
+    import math
+    xs = [h*i for i in range(1, d)]
+    ys = [math.sin(x) for x in xs]
+
+    # 解析解 y2
+    ys2, _ = solver(A, b)
+    fraction_top = max(abs(y2 - y) for y2,y in zip(ys2, ys))
+    fraction_bottom = max(abs(y) for y in ys)
+    print("error::", d, ",", fraction_top / fraction_bottom)
+
+    # rk / b 書き出し
+    x_arr, diff_arr = solver(A, b)
+    # print(x_arr)
+    with open("result-adv.csv", mode="w") as f:
         for i, val in enumerate(diff_arr):
             f.write(f"{i+1}, {val}\n")
-
+    
 
 if __name__ == "__main__":
     main()
