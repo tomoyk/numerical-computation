@@ -126,7 +126,7 @@ def main():
         elapsed_times.add(time.time() - begin)
         # print(time.time() - begin)
         # display_a(A2)
-    print("time=", sum(elapsed_times) / len(elapsed_times))
+    print("time::", n, ",", sum(elapsed_times) / len(elapsed_times))
 
     # 厳密解 y
     xs = [h*i for i in range(1, d)]
@@ -136,7 +136,7 @@ def main():
     ys2 = solver(A, b, n)
     fraction_top = max(abs(y2 - y) for y2,y in zip(ys2, ys))
     fraction_bottom = max(abs(y) for y in ys)
-    print("error=", fraction_top / fraction_bottom)
+    print("error::", d, ",", fraction_top / fraction_bottom)
 
 
 if __name__ == "__main__":
