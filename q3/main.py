@@ -76,7 +76,7 @@ def main():
     print(x_arr)
 
     # 書き出し
-    with open("result.csv", mode="w") as f:
+    with open("result-time.csv", mode="w") as f:
         for i, val in enumerate(diff_arr):
             f.write(f"{i+1}, {val}\n")
 
