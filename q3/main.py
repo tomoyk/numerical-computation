@@ -91,7 +91,7 @@ def main():
 
     # 解析解 y2
     ys2, _ = solver(A, b)
-    fraction_top = max(abs(y2 - y) for y2,y in zip(ys2, ys))
+    fraction_top = max(abs(y2 - y) for y2, y in zip(ys2, ys))
     fraction_bottom = max(abs(y) for y in ys)
     print("error::", d, ",", fraction_top / fraction_bottom)
 
@@ -101,7 +101,7 @@ def main():
     with open("result-adv.csv", mode="w") as f:
         for i, val in enumerate(diff_arr):
             f.write(f"{i+1}, {val}\n")
-    
+
 
 if __name__ == "__main__":
     main()
