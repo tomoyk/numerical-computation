@@ -18,10 +18,13 @@ def main():
     elapsed_times = []
     import time
     for x in xs:
-        begin = time.time()
-        _y = solver(x)
+        _tmp_elp = set()
+        for _ in range(10):
+            begin = time.time()
+            _y = solver(x)
+            _tmp_elp.add(time.time() - begin)
         ys.append(_y)
-        elapsed_times.append(time.time() - begin)
+        elapsed_times.append(sum(_tmp_elp) / len(_tmp_elp))
 
     labels = [x.dtype for x in xs]
     # print(labels)
