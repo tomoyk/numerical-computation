@@ -1,11 +1,11 @@
-# gnuplot < fig-error.plt
+# gnuplot < fig-result.plt
 
 # CSV
 set datafile separator ","
 
 # Save
 set terminal png
-set output "graph-error.png"
+set output "graph-result.png"
 
 # Font
 set tics font "Times New Roman, 14"
@@ -16,7 +16,7 @@ set key font "Times New Roman, 14"
 # Axis
 set logscale xy
 set xlabel "Size"
-set ylabel "Error"
+set ylabel "Epsilon"
 set nokey
 
 plot "result.csv" using 2:xtic(1) with linespoints
