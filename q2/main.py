@@ -120,7 +120,7 @@ def main():
     # 実行時間の計測と実行
     import time
     elapsed_times = set()
-    for _ in range(1):
+    for _ in range(10):
         begin = time.time()
         solver(A, b, n)
         elapsed_times.add(time.time() - begin)
