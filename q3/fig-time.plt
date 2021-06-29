@@ -18,8 +18,13 @@ set logscale xy
 set xlabel "n"
 set ylabel "cpu time"
 
-plot "result-time.csv" title "CG" with linespoints, \
-     "../q2/result-time.csv" title "Gauss" with linespoints
-# plot "../q2/result-time.csv" title "Gauss" with linespoints
+# Grids
+set grid linetype 1 linecolor 0 mxtics mytics
+
+# Legends
+set key left top
+
+plot "result-time.csv" title "CG" with linespoints linewidth 2, \
+     "../q2/result-time.csv" title "Gauss" with linespoints linewidth 2
 replot
 # pause -1
