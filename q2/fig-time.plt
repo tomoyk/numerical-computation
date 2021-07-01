@@ -18,6 +18,9 @@ set logscale xy
 set xlabel "n"
 set ylabel "cpu time"
 
-plot "result-time.csv" with linespoints
+# Grids
+set grid linetype 1 linecolor 0 mxtics mytics
+
+plot "result-time.csv" with linespoints linewidth 2
 
 # pause -1

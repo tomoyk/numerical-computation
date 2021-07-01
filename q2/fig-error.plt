@@ -18,6 +18,9 @@ set logscale xy
 set xlabel "d"
 set ylabel "error"
 
-plot "result-error.csv" with linespoints
+# Grids
+set grid linetype 1 linecolor 0 mxtics mytics
+
+plot "result-error.csv" with linespoints linewidth 2
 
 # pause -1
