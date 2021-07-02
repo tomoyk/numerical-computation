@@ -22,6 +22,6 @@ set nokey
 # Grids
 set grid linetype 1 linecolor 0 mxtics mytics
 
-plot "result-backup.csv" using 3:xtic(1) with linespoints
+plot "result-backup2.csv" using 3:xtic(1) with linespoints
 
 # pause -1
