@@ -19,6 +19,9 @@ set xlabel "iterations"
 set ylabel "|{r_k}| / |{b}|"
 set nokey
 
-plot "result-adv.csv" title "CG" with linespoints
+# Grids
+set grid linetype 1 linecolor 0 mxtics mytics
+
+plot "result-adv.csv" title "CG" with linespoints linewidth 1
 
 # pause -1
