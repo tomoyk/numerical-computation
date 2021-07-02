@@ -14,7 +14,7 @@ set ylabel font "Times New Roman, 18"
 set key font "Times New Roman, 14"
 
 # Axis
-set logscale xy
+set logscale y
 set xlabel "Size"
 set ylabel "Epsilon"
 set nokey
