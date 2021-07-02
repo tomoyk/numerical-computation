@@ -2,6 +2,7 @@ import numpy as np
 
 
 def solver(x):
+    print(x.dtype)
     while 1+x > 1:
         x = x / 2
     return x * 2
